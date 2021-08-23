@@ -1,0 +1,1 @@
+# Bitcoind Multi Node Docker Setup in Regtest Mode

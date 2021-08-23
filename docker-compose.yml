@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  node1:
+    build: .
+    command: bitcoind -connect=172.21.0.3:8332 -connect=172.21.0.4:8332 -connect=172.21.0.5:8332
+    networks:
+      vpcbr:
+        ipv4_address: 172.21.0.2
+  node2:
+    build: .
+    command: bitcoind -connect=172.21.0.2:8332 -connect=172.21.0.4:8332 -connect=172.21.0.5:8332
+    networks:
+      vpcbr:
+        ipv4_address: 172.21.0.3
+  node3:
+    build: .
+    command: bitcoind -connect=172.21.0.2:8332 -connect=172.21.0.3:8332 -connect=172.21.0.5:8332
+    networks:
+      vpcbr:
+        ipv4_address: 172.21.0.4
+  node4:
+    build: .
+    command: bitcoind -connect=172.21.0.2:8332 -connect=172.21.0.3:8332 -connect=172.21.0.4:8332
+    networks:
+      vpcbr:
+        ipv4_address: 172.21.0.5
+networks:
+  vpcbr:
+      driver: bridge
+      ipam:
+        config:
+          - subnet: 172.21.0.0/16
