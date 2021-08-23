@@ -11,3 +11,4 @@ COPY --from=builder "/tmp/bin" /usr/local/bin
 WORKDIR /root
 RUN mkdir .bitcoin
 COPY bitcoin.conf .bitcoin
+EXPOSE 8332 18444
