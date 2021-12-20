@@ -1,11 +1,30 @@
 version: "3.9"
 services:
   miner:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: miner
     command: bitcoind -connect=node1:8332 -connect=node2:8332
+    volumes:
+      - miner_data:/home/bitcoin/.bitcoin
   node1:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: node1
     command: bitcoind -connect=miner:8332 -connect=node2:8332
+    volumes:
+      - node1_data:/home/bitcoin/.bitcoin
   node2:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: node2
     command: bitcoind -connect=miner:8332 -connect=node1:8332
+    volumes:
+      - node2_data:/home/bitcoin/.bitcoin
+volumes:
+  miner_data:
+  node1_data:
+  node2_data:

@@ -8,7 +8,14 @@ RUN wget -O bitcoin.tar.gz "https://bitcoincore.org/bin/bitcoin-core-${VERSION}/
 
 FROM debian:buster-slim
 COPY --from=builder "/tmp/bin" /usr/local/bin
-WORKDIR /root
+RUN groupadd -f -g 1000 bitcoin
+RUN useradd -r -u 1000 -g bitcoin -s /bin/bash bitcoin
+WORKDIR /home/bitcoin
 RUN mkdir .bitcoin
 COPY bitcoin.conf .bitcoin
+COPY mine.sh /usr/local/bin
+RUN chmod +x /usr/local/bin/mine.sh
+COPY .bashrc .
+RUN chown -R bitcoin:bitcoin /home/bitcoin
 EXPOSE 8332 18444
+USER bitcoin
