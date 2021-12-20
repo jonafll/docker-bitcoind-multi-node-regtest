@@ -17,5 +17,5 @@ COPY mine.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/mine.sh
 COPY .bashrc .
 RUN chown -R bitcoin:bitcoin /home/bitcoin
-EXPOSE 8332 18444
+EXPOSE 18443 18444 28334 28335
 USER bitcoin
