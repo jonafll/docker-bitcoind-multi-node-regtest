@@ -1,6 +1,6 @@
 # Bitcoind Multi Node Docker Setup (Regtest)
 
-This setup runs 4 bitcoind nodes in regtest with non persistent storage.
+Spin up 3 bitcoind nodes in regtest mode.
 
 ## Requirements
 
@@ -8,15 +8,14 @@ Docker or Docker Desktop installed on your machine.
 
 ## Usage
 
-Build the image from Dockerfile and start up the nodes.
+Build the image and start up the nodes.
 
 ```shell
-$ docker-compose -p bitcoind build
-$ docker-compose -p bitcoind up -d
+$ make up_build
 ```
 
-Exec into one of the containers
+Exec into one of the containers.
 
 ```shell
-$ docker exec -it node1 /bin/bash
+$ make miner
 ```
