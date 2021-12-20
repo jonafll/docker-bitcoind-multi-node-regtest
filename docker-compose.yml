@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: miner
+    hostname: miner
     command: bitcoind -connect=node1:8332 -connect=node2:8332
     volumes:
       - miner_data:/home/bitcoin/.bitcoin
@@ -13,6 +14,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: node1
+    hostname: node1
     command: bitcoind -connect=miner:8332 -connect=node2:8332
     volumes:
       - node1_data:/home/bitcoin/.bitcoin
@@ -21,6 +23,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: node2
+    hostname: node2
     command: bitcoind -connect=miner:8332 -connect=node1:8332
     volumes:
       - node2_data:/home/bitcoin/.bitcoin
