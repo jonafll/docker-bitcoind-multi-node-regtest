@@ -10,10 +10,10 @@ RUN wget -O bitcoin.tar.gz "https://bitcoincore.org/bin/bitcoin-core-${VERSION}/
     && mkdir bin \
     && tar -xzvf bitcoin.tar.gz -C /tmp/bin --strip-components=2 "bitcoin-${VERSION}/bin/bitcoin-cli" "bitcoin-${VERSION}/bin/bitcoind" "bitcoin-${VERSION}/bin/bitcoin-wallet"
 
-RUN curl -SLO https://raw.githubusercontent.com/bitcoin/bitcoin/master/contrib/bitcoin-cli.bash-completion \
+RUN wget -O https://raw.githubusercontent.com/bitcoin/bitcoin/master/contrib/bitcoin-cli.bash-completion \
     && mkdir /etc/bash_completion.d \
     && mv bitcoin-cli.bash-completion /etc/bash_completion.d/ \
-    && curl -SLO https://raw.githubusercontent.com/scop/bash-completion/master/bash_completion \
+    && wget -O https://raw.githubusercontent.com/scop/bash-completion/master/bash_completion \
     && mv bash_completion /usr/share/bash-completion/
 
 FROM debian:buster-slim
