@@ -1,6 +1,6 @@
 FROM debian:buster-slim as builder
 
-RUN apt-get update && apt-get install wget -y
+RUN apt-get update -y && apt-get install -y wget
 
 WORKDIR /tmp
 
