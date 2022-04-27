@@ -4,7 +4,7 @@ RUN apt-get update -y && apt-get install -y wget
 
 WORKDIR /tmp
 
-ARG VERSION="22.0"
+ARG VERSION="23.0"
 
 RUN wget -O bitcoin.tar.gz "https://bitcoincore.org/bin/bitcoin-core-${VERSION}/bitcoin-${VERSION}-x86_64-linux-gnu.tar.gz" \
     && mkdir bin \
