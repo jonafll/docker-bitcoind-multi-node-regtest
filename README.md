@@ -11,11 +11,11 @@ Docker or Docker Desktop installed on your machine.
 Build the image and start up the nodes.
 
 ```shell
-$ make up_build
+$ make docker.up.build
 ```
 
 Exec into one of the containers.
 
 ```shell
-$ make miner
+$ make docker.exec.miner
 ```
