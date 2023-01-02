@@ -1,17 +1,17 @@
-up:
+docker.up:
 	docker-compose up -d
 
-up_build:
+docker.up.build:
 	docker-compose up --build -d 
 
-down:
+docker.down:
 	docker-compose down
 
-miner:
+docker.exec.miner:
 	docker exec -it miner /bin/bash
 
-node1:
+docker.exec.node1:
 	docker exec -it node1 /bin/bash
 
-node2:
+docker.exec.node2:
 	docker exec -it node2 /bin/bash
